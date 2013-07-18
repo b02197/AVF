@@ -35,7 +35,7 @@ $('#food').click(function(){
 	    
 	    
 	    $.each(data.data, function(index, photo){
-	           var picture = "<li><img src='" + photo.images.standard_resolution.url + "' alt='" + photo.user.id + "' /><h4>" + photo.user.full_name + ", <em>(" + photo.user.username +")</em></h4></li>";
+	           var picture = "<li><img src='" + photo.images.standard_resolution.url + "' alt='" + photo.user.id + "' />" + photo.user.full_name + ", <em>(" + photo.user.username +")</em> , "+ photo.caption.text + "</li>";
 	           $("#picData").append(picture)
 	           });
 	};
@@ -57,7 +57,7 @@ alert("loaded");
 		$("#weatherLi").append(weath);
 	});
 };*/
-$('#temp').click(function(){
+/*$('#temp').click(function(){
                  $(function(){
                    var url = "http://api.aerisapi.com/observations/bridgeport,mi?client_id=4J0DvsCTHRMqeVoRsv1mz&client_secret=uwQuCX7jTQ2XaRxgxa3zc88E1AYAZouq3gXlggoH"
                    $.getJSON(url, screenTemp);
@@ -148,4 +148,23 @@ var screenhum = function(data){
            var hums = "<li> The current humiditiy is: "+ ob.humidity + "</li>"
            $('#weatherList').append(hums)
            })
-}
+}*/
+
+
+$(function(){
+  var wUrl = "http://api.aerisapi.com/observations/bridgeport,mi?client_id=4J0DvsCTHRMqeVoRsv1mz&client_secret=uwQuCX7jTQ2XaRxgxa3zc88E1AYAZouq3gXlggoH"
+  $.getJSON(wUrl, outPutScreen);
+  console.log(wUrl)
+  });
+
+
+var outPutScreen = function(data){
+	console.log(data);
+	var ob = data.response.ob;
+	var temp = "<li> The temp is: <h4>" + ob.tempF + " F</h4></li>";
+	var wind = "<li> The Wind speed is: <h4>" + ob.windMPH + " MPH</h4></li>";
+	var weather = "<li> The weather condition is: <h4>" + ob.weather + "</h4></li>"
+	$('#weatherList').append(temp);
+	$('#weatherList').append(wind);
+	$('#weatherList').append(weather);
+};

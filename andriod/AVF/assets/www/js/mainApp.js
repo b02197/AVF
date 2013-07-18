@@ -62,96 +62,113 @@ alert("loaded");
 		$("#weatherLi").append(weath);
 	});
 };*/
-
+/*
 $('#temp').click(function(){
-	 $(function(){
-	  	  var url = "http://api.aerisapi.com/observations/bridgeport,mi?client_id=4J0DvsCTHRMqeVoRsv1mz&client_secret=uwQuCX7jTQ2XaRxgxa3zc88E1AYAZouq3gXlggoH"
-	  $.getJSON(url, screenTemp);
-	  
-	  });
-})
+                 $(function(){
+                   var url = "http://api.aerisapi.com/observations/bridgeport,mi?client_id=4J0DvsCTHRMqeVoRsv1mz&client_secret=uwQuCX7jTQ2XaRxgxa3zc88E1AYAZouq3gXlggoH"
+                   $.getJSON(url, screenTemp);
+                   
+                   });
+                 })
 
 var screenTemp = function(data){
 	console.log(data)
     var ob = data.response.ob;
     
     $.each(data.response, function(index, sun){
-           var temp = "<li> The current temperature is: "+ ob.tempF + " F</li>"
+           var temp = "<li> The current temperature is: <h4>"+ ob.tempF + " F</h4></li>"
            $('#weatherList').append(temp)
-    })
+           })
 }
 
 $('#cloud').click(function(){
-	 $(function(){
-	  	  var url = "http://api.aerisapi.com/observations/bridgeport,mi?client_id=4J0DvsCTHRMqeVoRsv1mz&client_secret=uwQuCX7jTQ2XaRxgxa3zc88E1AYAZouq3gXlggoH"
-	  $.getJSON(url, screencloud);
-	  
-	  });
-})
+                  $(function(){
+                    var url = "http://api.aerisapi.com/observations/bridgeport,mi?client_id=4J0DvsCTHRMqeVoRsv1mz&client_secret=uwQuCX7jTQ2XaRxgxa3zc88E1AYAZouq3gXlggoH"
+                    $.getJSON(url, screencloud);
+                    
+                    });
+                  })
 
 var screencloud = function(data){
 	console.log(data)
     var ob = data.response.ob;
     
     $.each(data.response, function(index, sun){
-           var weather = "<li> The current weather is: "+ ob.weather + "</li>"
+           var weather = "<li> The current weather is: <h4>"+ ob.weather + "</h4></li>"
            $('#weatherList').append(weather)
-    })
+           })
 }
 
 $('#wind').click(function(){
-	 $(function(){
-	  	  var url = "http://api.aerisapi.com/observations/bridgeport,mi?client_id=4J0DvsCTHRMqeVoRsv1mz&client_secret=uwQuCX7jTQ2XaRxgxa3zc88E1AYAZouq3gXlggoH"
-	  	  var name = "food";
-	  $.getJSON(url, screenWind);
-	  
-	  });
-})
+                 $(function(){
+                   var url = "http://api.aerisapi.com/observations/bridgeport,mi?client_id=4J0DvsCTHRMqeVoRsv1mz&client_secret=uwQuCX7jTQ2XaRxgxa3zc88E1AYAZouq3gXlggoH"
+                   var name = "food";
+                   $.getJSON(url, screenWind);
+                   
+                   });
+                 })
 
 var screenWind = function(data){
 	console.log(data)
     var ob = data.response.ob;
     
     $.each(data.response, function(index, sun){
-           var winds = "<li> The current wind speed is: "+ ob.windMPH + " MPH</li>"
+           var winds = "<li> The current wind speed is: <h4>"+ ob.windMPH + " MPH</h4></li>"
            $('#weatherList').append(winds)
-    })
+           })
 }
 
 $('#feel').click(function(){
-	 $(function(){
-	  	  var url = "http://api.aerisapi.com/observations/bridgeport,mi?client_id=4J0DvsCTHRMqeVoRsv1mz&client_secret=uwQuCX7jTQ2XaRxgxa3zc88E1AYAZouq3gXlggoH"
-	  	  var name = "food";
-	  $.getJSON(url, screenFeel);
-	  
-	  });
-})
+                 $(function(){
+                   var url = "http://api.aerisapi.com/observations/bridgeport,mi?client_id=4J0DvsCTHRMqeVoRsv1mz&client_secret=uwQuCX7jTQ2XaRxgxa3zc88E1AYAZouq3gXlggoH"
+                   var name = "food";
+                   $.getJSON(url, screenFeel);
+                   
+                   });
+                 })
 
 var screenFeel = function(data){
 	console.log(data)
     var ob = data.response.ob;
     
     $.each(data.response, function(index, sun){
-           var feels = "<li> It feels like: "+ ob.feelslikeF + " F outside.</li>"
+           var feels = "<li> It feels like: <h4>"+ ob.feelslikeF + " F </h4>outside.</li>"
            $('#weatherList').append(feels)
-    })
+           })
 }
 
 $('#hum').click(function(){
-	 $(function(){
-	  	  var url = "http://api.aerisapi.com/observations/bridgeport,mi?client_id=4J0DvsCTHRMqeVoRsv1mz&client_secret=uwQuCX7jTQ2XaRxgxa3zc88E1AYAZouq3gXlggoH"
-	  	  var name = "food";
-	  $.getJSON(url, screenhum);
-	  
-	  });
-})
+                $(function(){
+                  var url = "http://api.aerisapi.com/observations/bridgeport,mi?client_id=4J0DvsCTHRMqeVoRsv1mz&client_secret=uwQuCX7jTQ2XaRxgxa3zc88E1AYAZouq3gXlggoH"
+                  var name = "food";
+                  $.getJSON(url, screenhum);
+                  
+                  });
+                })
 
 var screenhum = function(data){
 	console.log(data)
     var ob = data.response.ob;
     
     $.each(data.response, function(index, sun){
-           var hums = "<li> The current humiditiy is: "+ ob.humidity + "</li>"
+           var hums = "<li> The current humiditiy is: <h4>"+ ob.humidity + "</h4></li>"
            $('#weatherList').append(hums)
-    })
-}
+           })*/
+           
+$(function(){
+  var wUrl = "http://api.aerisapi.com/observations/bridgeport,mi?client_id=4J0DvsCTHRMqeVoRsv1mz&client_secret=uwQuCX7jTQ2XaRxgxa3zc88E1AYAZouq3gXlggoH"
+  $.getJSON(wUrl, outPutScreen);
+  console.log(wUrl)
+  });
+
+
+var outPutScreen = function(data){
+	console.log(data);
+	var ob = data.response.ob;
+	var temp = "<li> The temp is: <h4>" + ob.tempF + " F</h4></li>";
+	var wind = "<li> The Wind speed is: <h4>" + ob.windMPH + " MPH</h4></li>";
+	var weather = "<li> The weather condition is: <h4>" + ob.weather + "</h4></li>"
+	$('#weatherLi').append(temp);
+	$('#weatherLi').append(wind);
+	$('#weatherLi').append(weather);
+};
