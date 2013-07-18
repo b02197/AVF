@@ -4,3 +4,18 @@ AVF 1307
 Week 1
 IOS App Demo
 */
+
+@media screen and (orientation:landscape){
+    .applelandscape{
+        width:30%
+        float:right;
+
+}
+
+@media only screen amd (orientation:portrait){
+
+       .appleportrait{
+            clear:both;
+
+    }
+}
