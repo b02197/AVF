@@ -178,6 +178,15 @@
 				</header>
 				<div data-role="content">
 					<h2>Accelerometer</h2>
+					<div class="ui-grid-b">
+                        <div class="ui-block-a">X: <b id="x">&nbsp;</b></div>
+                        <div class="ui-block-b">Y: <b id="y">&nbsp;</b></div> 
+                        <div class="ui-block-c">Z: <b id="z">&nbsp;</b></div>
+                </div>                         
+                <div class="ui-grid-a">
+                        <div class="ui-block-a"><div data-role="button" onclick="toggleAccel();">Toggle</div></div>
+                        <div class="ui-block-b"><div data-role="button" onclick="getAccel();">Get Current</div></div>      
+
                 </div>                          				
         		<footer data-role="footer" data-position="fixed">
 					<nav data-role="navbar">

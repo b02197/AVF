@@ -92,7 +92,7 @@ var getCurrentPosition = function() {
     navigator.geolocation.getCurrentPosition(gSuccess, gError);
 };
 
-// api-geolocation Watch Position
+// geolocation Watch Position
 var watchID = null;
 function clearWatch() {
     if (watchID !== null) {
@@ -134,3 +134,51 @@ var toggleWatch = function() {
     }
 };
 
+
+//Accelerometer
+function roundNumber(num) {  // make numbers round
+    var dec = 3;
+    var result = Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
+    return result;
+}
+
+var accelerationWatch = null;
+function updateAcceleration(acceleration) {
+    document.getElementById('x').innerHTML = roundNumber(acceleration.x);
+    document.getElementById('y').innerHTML = roundNumber(acceleration.y);
+    document.getElementById('z').innerHTML = roundNumber(acceleration.z);
+}
+function toggleAccel() {
+    if (accelerationWatch !== null) {
+        navigator.accelerometer.clearWatch(accelerationWatch);
+        updateAcceleration({
+            x : "",
+            y : "",
+            z : ""
+        });
+        accelerationWatch = null;
+    } else {
+        var options = {};
+        options.frequency = 1000;
+        accelerationWatch = navigator.accelerometer.watchAcceleration(
+                updateAcceleration, function(ex) {
+                    alert("Accelerometer Error!");
+                }, options);
+    }
+}
+
+function getAccel() {
+    if (accelerationWatch !== null) {
+        navigator.accelerometer.clearWatch(accelerationWatch);
+        updateAcceleration({
+            x : "",
+            y : "",
+            z : ""
+        });
+        accelerationWatch = null;
+    }
+    navigator.accelerometer.getCurrentAcceleration(
+            updateAcceleration, function(ex) {
+                alert("Accelerometer Error!");
+            });
+}
