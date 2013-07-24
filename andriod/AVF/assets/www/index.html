@@ -46,23 +46,16 @@
 			        	<h2>Accelerometer</h2>
 			        	</a>
 			        </li>
-		        	<li>
-		        		<a href="#barcode">
-			        	<img src="img/bcs.jpg">
-			        	<h2>Barcode Scanner</h2>
-			        	</a>
-			        </li>
 			        <li>
-		        		<a href="#camera">
+		        		<a href="#deviceInfo">
 			        	<img src="img/camera.jpg">
-			        	<h2>Camera</h2>
+			        	<h2>Device information</h2>
 			        	</a>
 			        </li>
-			        
 			        <li>
-		        		<a href="#map">
+		        		<a href="#geoLoc">
 			        	<img src="img/map.jpg">
-			        	<h2>Map</h2>
+			        	<h2>Geolocation</h2>
 			        	</a>
 			        </li>
 			        <li>
@@ -115,7 +108,7 @@
 					</nav>
 				</footer>         
 			</section>
-			<section data-role="page" id="about"> 						<! About page>
+			<section data-role="page" id="about">						<!About page>
 				<header data-role="header" data-position="fixed">
 					<h1>AVF Demo App</h1>
 				</header>
@@ -142,86 +135,148 @@
 					</nav>
 				</footer>
 			</section>
-			<section data-role="page" id="barcode">						 <!Barcode Scanner page>
-				<section data-role="header" data-position="fixed">
+			
+			
+			<section data-role="page" id="geoLoc">							<!Barcode Page>
+				<header data-role="header" data-position="fixed">
 					<h1>AVF Demo App</h1>
-				</section>
-				<section data-role="content">
-					<h2>Barcode Scanner</h2>
-				</section>
-				<section data-role="footer" data-position="fixed">
+				</header>
+				<div data-role="content">
+					<h2>GeoLocation</h2>
+					<div class="ui-grid-a">
+                        <div class="ui-block-a"><div data-role="button" onclick="toggleWatch();">Toggle</div></div>
+                        <div class="ui-block-b"><div data-role="button" onclick="getCurrentPosition();">Get Current</div></div>
+                    </div>
+                    <div id="currentPosition"></div>
+                    <img id="map"/>
+				</div>
+				<footer data-role="footer" data-position="fixed">
 					<nav data-role="navbar">
 						<ul>
 							<li><a href="#index">Home</a></li>
 							<li><a href="#about">About</a></li>
 						</ul>
 					</nav>
-				</section>
+				</footer>
 			</section>
-			<section data-role="page" id="accel">						<!accelerometer page>
-				<section data-role="header" data-position="fixed">
+			
+			
+			<section data-role="page" id="accel">						<!Accelerometer page>
+				<header data-role="header" data-position="fixed">
 					<h1>AVF Demo App</h1>
-				</section>
-				<section data-role="content">
+				</header>
+				<div data-role="content">
 					<h2>Accelerometer</h2>
-				</section>
-				<section data-role="footer" data-position="fixed">
+					<div class="ui-grid-b">
+                        <div class="ui-block-a">X: <b id="x">&nbsp;</b></div>
+                        <div class="ui-block-b">Y: <b id="y">&nbsp;</b></div> 
+                        <div class="ui-block-c">Z: <b id="z">&nbsp;</b></div>
+                </div>                         
+                <div class="ui-grid-a">
+                        <div class="ui-block-a"><div data-role="button" onclick="toggleAccel();">Toggle</div></div>
+                        <div class="ui-block-b"><div data-role="button" onclick="getAccel();">Get Current</div></div>      
+
+                </div>                          				
+        		<footer data-role="footer" data-position="fixed">
 					<nav data-role="navbar">
 						<ul>
 							<li><a href="#index">Home</a></li>
 							<li><a href="#about">About</a></li>
 						</ul>
 					</nav>
-				</section>
+				</footer>
 			</section>
-			<section data-role="page" id="camera">						<!Camera page>
-				<section data-role="header" data-position="fixed">
+			
+			
+			<section data-role="page" id="deviceInfo">							<!Device Info page>
+				<header data-role="header" data-position="fixed">
 					<h1>AVF Demo App</h1>
-				</section>
-				<section data-role="content">
-					<h2>Camera</h2>
-				</section>
-				<section data-role="footer" data-position="fixed">
+				</header>
+				<div data-role="content">
+					<h2>Device information</h2>
+					<table id="deviceinfo" border="2">
+                        <tr>
+                            <th>Device</th>
+                            <th class="alt">Value</th>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td class="alt"><center><strong id="name">&nbsp;</strong></center></td>
+                        </tr>
+                        <tr>
+                            <td>Platform</td>
+                            <td class="alt"><center><strong id="platform">&nbsp;</strong></center></td>
+                        </tr>
+                        <tr>
+                            <td>PhoneGap Version</td>
+                            <td class="alt"><center><strong id="pgversion">&nbsp;</strong></center></td>
+                        </tr>
+                        <tr>
+                            <td>UUID</td>
+                            <td class="alt"><center><strong id="uuid">&nbsp;</strong></center></td>
+                        </tr>
+                        <tr>
+                            <td>OS Version</td>
+                            <td class="alt"><center><strong id="version">&nbsp;</strong></center></td>
+                        </tr>
+                        <tr>
+                            <th>Screen</th>
+                            <th class="alt">Value</th>
+                        </tr>
+                        <tr>
+                            <td>Width</td>
+                            <td class="alt"><center><strong id="width">&nbsp;</strong></center></td>
+                        </tr>
+                        <tr>
+                            <td>Height</td>
+                            <td class="alt"><center><strong id="height">&nbsp;</strong></center></td>
+                        </tr>
+                        <tr>
+                            <td>Available Width</td>
+                            <td class="alt"><center><strong id="availwidth">&nbsp;</strong></center></td>
+                        </tr>
+                        <tr>
+                            <td>Available Height</td>
+                            <td class="alt"><center><strong id="availheight">&nbsp;</strong></center></td>
+                        </tr>
+                        <tr>
+                            <td>Color Depth</td>
+                            <td class="alt"><center><strong id="colorDepth">&nbsp;</strong></center></td>
+                        </tr>
+                    </table>
+
+				</div>
+				<footer data-role="footer" data-position="fixed">
 					<nav data-role="navbar">
 						<ul>
 							<li><a href="#index">Home</a></li>
 							<li><a href="#about">About</a></li>
 						</ul>
 					</nav>
-				</section>
+				</footer>
 			</section>
-			<section data-role="page" id="map">  						<!Map page>
-				<section data-role="header" data-position="fixed">
-					<h1>AVF Demo App</h1>
-				</section>
-				<section data-role="content">
-					<h2>Map</h2>
-				</section>
-				<section data-role="footer" data-position="fixed">
-					<nav data-role="navbar">
-						<ul>
-							<li><a href="#index">Home</a></li>
-							<li><a href="#about">About</a></li>
-						</ul>
-					</nav>
-				</section>
-			</section>
+			
+			
 			<section data-role="page" id="network">							<!Network page>
-				<section data-role="header" data-position="fixed">
+				<header data-role="header" data-position="fixed">
 					<h1>AVF Demo App</h1>
-				</section>
-				<section data-role="content">
-					<h2>Network</h2>
-				</section>
-				<section data-role="footer" data-position="fixed">
+				</header>
+				<div data-role="content">
+					<h2>Network Connections</h2>
+					<div data-role="button" onclick="checkNetwork();">Check Connection</div>
+                    <div>Connection: <b id="connection"></b></div>
+				</div>
+				<footer data-role="footer" data-position="fixed">
 					<nav data-role="navbar">
 						<ul>
 							<li><a href="#index">Home</a></li>
 							<li><a href="#about">About</a></li>
 						</ul>
 					</nav>
-				</section>
+				</footer>
 			</section>
+			
+			
 			<section data-role="page" id="instaApi">						<!Instagram page>
 				<header data-role="header" data-position="fixed">
 					<h1>AVF Demo App</h1>
@@ -245,12 +300,15 @@
 					</nav>
 				</footer>
 			</section>
+			
+			
 			<section data-role="page" id="weatherApi">					<!weather source page>
 				<header data-role="header" data-position="fixed">
 					<h1>AVF Demo App</h1>
 				</header>
 				<div data-role="content">
 					<h2>HAMweather Aeris API</h2>
+                   
                     <ul id="weatherList">
                         <li id="weatherLi"><h3>The weather in Bridgeport Michigan is:</h3></li>
                     </ul>
@@ -264,14 +322,15 @@
 					</nav>
 				</footer>
 			</section>
-
-			<section data-role="page" id="week1">						<!week1 dis page>
+			
+			
+			<section data-role="page" id="week1">						<!week 1 page>
 				<header data-role="header" data-position="fixed">
 					<h1>AVF Demo App</h1>
 				</header>
 				<div data-role="content">
 					<h2>Week 1:</h2>
-					<p><strong> Less obvious perks of using 'live' data resources include logins and payments. How could Twitter be used in these two scenarios?</strong></p>
+                   <p><strong> Less obvious perks of using 'live' data resources include logins and payments. How could Twitter be used in these two scenarios?</strong></p>
                     
                     <p>Twitter could help with a secure login for the users. It would also be easy way for users to register with the app. For payments the user would have a secure way to make payment transaction without having to worry about the app being about to grab the users personal information.</p>
                     
@@ -290,7 +349,7 @@
                     
                     <p><strong>Briefly describe some past 'lessons learned' regarding workflow as it relates to research, design, development, etc.</strong></p>
                     
-                    <p>Some past lessons learn for me are not to put off a project till the last minute. Trying to rush a project in a few hours isn’t fun but can be done. I learned that when I do a little research on the function that I would like to create, it is easier to implement it in the code with fewer errors when just trying to wing it for hours till you figure it out.</p>
+                    <p>Some past lessons learn for me are not to put off a project till the last minute. Trying to rush a project in a few hours isn&#39;t fun but can be done. I learned that when I do a little research on the function that I would like to create, it is easier to implement it in the code with fewer errors when just trying to wing it for hours till you figure it out.</p>
 				</div>
 				<footer data-role="footer" data-position="fixed">
 					<nav data-role="navbar">
@@ -301,37 +360,71 @@
 					</nav>
 				</footer>
 			</section>
-			<section data-role="page" id="week2">					<!week 2 dis page>
-				<section data-role="header" data-position="fixed">
+			
+			
+			<section data-role="page" id="week2">						<!week 2 page>
+				<header data-role="header" data-position="fixed">
 					<h1>AVF Demo App</h1>
-				</section>
-				<section data-role="content">
+				</header>
+				<div data-role="content">
 					<h2>Week 2:</h2>
-				</section>
-				<section data-role="footer" data-position="fixed">
+					<p><strong>What are some of the ways that you could change your HTML on your Demo app to be more accessible? (Remember, you can use the Section tag with jQuery, for instance)</strong></p>
+
+<p>A screen reader would be nice to put into the weather api of my app to read off the weather. In my html I would just have to watch all my tags and make sure that they are sematic and are in a place that they should be.</p>
+
+<p><strong>Visit a video service on the web (like YouTube) and search for "Screen Reader Demo" and "Mobile Screen Reader" - what are some of the common frustrations (or common support mechanisms) that you see among the examples that are given - how could you fix them (or use them)?</strong></p>
+
+<p>Some of the common screen reader frustrations are the presence of inaccessible Flash content, Links or buttons that do make sense, the alt text of an image will be missing or improperly descripted, make it hard to do complex or difficult forms, and the lack of keyboard accessibility. I think that to fix these problems you would have to make your website dumbed down a little in the html file. Make sure that you have everything laid out so that a screen reader would have to much problem reading your site. But it also comes down to the screen readers need to be programmed a little more to get rid of these bugs.</p>
+
+<p><strong>Devices: Please list two devices (and some of their features) that are made specifically to support Accessibility.</strong></p>
+<p>
+Android-<br>
+TalkBack<br>
+KickBack<br>
+SoundBack<br>
+Auto-rotate screen<br>
+Large text option.<br>
+</p>
+<p>
+IOS-<br>
+VoiceOver<br>
+Zoom<br>
+Large Text<br>
+Invert Colors<br>
+Assistive Touch<br>
+</p>
+<p><strong>Mobile Apps: Please list two apps (either Android or iOS, or both) that are made specifically to support Accessibility.</strong></p>
+
+<p>Andriods TalkBack app is made to add spoken, audible, and vibration functionality to your device.</p>
+
+<p>Andriod Vibration Notifier. This app will vibrate your phone every X minutes if you have missed a call or SMS.</p>
+				</div>
+				<footer data-role="footer" data-position="fixed">
 					<nav data-role="navbar">
 						<ul>
 							<li><a href="#index">Home</a></li>
 							<li><a href="#about">About</a></li>
 						</ul>
 					</nav>
-				</section>
+				</footer>
 			</section>
-			<section data-role="page" id="week3">						<!week 3 dis page>
-				<section data-role="header" data-position="fixed">
+			
+			
+			<section data-role="page" id="week3">							<!week 3 page>
+				<header data-role="header" data-position="fixed">
 					<h1>AVF Demo App</h1>
-				</section>
-				<section data-role="content">
+				</header>
+				<div data-role="content">
 					<h2>Week 3:</h2>
-				</section>
-				<section data-role="footer" data-position="fixed">
+				</div>
+				<footer data-role="footer" data-position="fixed">
 					<nav data-role="navbar">
 						<ul>
 							<li><a href="#index">Home</a></li>
 							<li><a href="#about">About</a></li>
 						</ul>
 					</nav>
-				</section>
+				</footer>
 			</section>
        <script src="js/jquery-2.0.0.min.js" type="text/javascript"></script>
        <script src="js/jquery.mobile-1.3.1.min.js" type="text/javascript"></script>
