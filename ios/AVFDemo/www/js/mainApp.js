@@ -182,3 +182,26 @@ function getAccel() {
                 alert("Accelerometer Error!");
             });
 }
+
+//Device Info
+
+var onDeviceReady = function() {
+    console.log("deviceready event fired");
+    
+    document.getElementById("name").innerHTML = device.name;
+    document.getElementById("pgversion").innerHTML = device.cordova ? device.cordova : device.phonegap;
+    document.getElementById("platform").innerHTML = device.platform;
+    document.getElementById("uuid").innerHTML = device.uuid;
+    document.getElementById("version").innerHTML = device.version;
+    document.getElementById("width").innerHTML = screen.width;
+    document.getElementById("height").innerHTML = screen.height;
+    document.getElementById("availwidth").innerHTML = screen.availWidth;
+    document.getElementById("availheight").innerHTML = screen.availHeight;
+    document.getElementById("colorDepth").innerHTML = screen.colorDepth;
+};
+
+
+//page listener
+function init() {
+    document.addEventListener("deviceready", onDeviceReady, true);
+}
