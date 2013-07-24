@@ -12,10 +12,10 @@ IOS App Demo
 
 }
 
-@media only screen amd (orientation:portrait){
+@media only screen and (orientation:portrait){
 
        .appleportrait{
-            clear:both;
+            width:100%;
 
     }
 }
