@@ -271,10 +271,12 @@
 			<section data-role="page" id="network">							<!Network page>
 				<header data-role="header" data-position="fixed">
 					<h1>AVF Demo App</h1>
-				</header>>
+				</header>
 				<div data-role="content">
 					<h2>Network Connections</h2>
-				</div>>
+					<div data-role="button" onclick="checkNetwork();">Check Connection</div>
+                    <div>Connection: <b id="connection"></b></div>
+				</div>
 				<footer data-role="footer" data-position="fixed">
 					<nav data-role="navbar">
 						<ul>
