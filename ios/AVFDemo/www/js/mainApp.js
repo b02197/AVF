@@ -66,3 +66,71 @@ var outPutScreen = function(data){
 	$('#weatherList').append(weather);
 };
 
+//geolocation
+
+var getCurrentPosition = function() {
+    var gSuccess = function(pos) {
+        var text = "<div>Latitude: " + pos.coords.latitude +
+        "<br/>" + "Longitude: " + pos.coords.longitude + "<br/>" +
+        "Accuracy: " + pos.coords.accuracy + "m<br/>" + "</div>";
+        $("#currentPosition").html(text);
+        console.log(text);
+        $('#map').css('visibility','visible');
+        $('#map').attr('src', "http://maps.googleapis.com/maps/api/staticmap?center=" +
+                       pos.coords.latitude + "," + pos.coords.longitude +
+                       "&zoom=13&size=600x300&maptype=roadmap&markers=color:green%7C" +
+                       pos.coords.latitude + "," + pos.coords.longitude + "&sensor=false");
+    };
+    var gError = function(error) {
+        $("#currentPosition").html("Error getting geolocation: " + error.code);
+        console.log("Error getting geolocation: code=" + error.code + " message=" + error.message);
+    };
+    
+    $('#map').css('visibility','hidden');
+    $("#currentPosition").html("Getting geolocation . . .");
+    console.log("Getting geolocation . . .");
+    navigator.geolocation.getCurrentPosition(gSuccess, gError);
+};
+
+// api-geolocation Watch Position
+var watchID = null;
+function clearWatch() {
+    if (watchID !== null) {
+        navigator.geolocation.clearWatch(watchID);
+        watchID = null;
+        $("#currentPosition").empty();
+        $('#map').css('visibility','hidden');
+    }
+}
+var wSuccess = function(pos) {
+    $("#currentPosition").html("Watching geolocation . . .");
+    $('#map').css('visibility','hidden');
+    var text = "<div>Latitude: " + pos.coords.latitude +
+    " (watching)<br/>" + "Longitude: " + pos.coords.longitude + "<br/>" +
+    "Accuracy: " + pos.coords.accuracy + "m<br/>" + "</div>";
+    $("#currentPosition").html(text);
+    console.log(text);
+    $('#map').css('visibility','visible');
+    $('#map').attr('src', "http://maps.googleapis.com/maps/api/staticmap?center=" +
+                   pos.coords.latitude + "," + pos.coords.longitude +
+                   "&zoom=13&size=600x300&maptype=roadmap&markers=color:green%7C" +
+                   pos.coords.latitude + "," + pos.coords.longitude + "&sensor=false");
+};
+var wError = function(error) {
+    $("#currentPosition").html("Error getting geolocation: " + error.code);
+    console.log("Error getting geolocation: code=" + error.code + " message=" + error.message);
+};
+var toggleWatch = function() {
+    if (watchID) {
+        console.log("Stopped watching position");
+        clearWatch();  // sets watchID = null;
+    } else {
+        //$("#cur_position").empty();
+        $('#map').css('visibility','hidden');
+        $("#currentPosition").html("Watching geolocation . . .");
+        console.log("Watching geolocation . . .");
+        var options = { frequency: 3000, maximumAge: 5000, timeout: 5000, enableHighAccuracy: true };
+        watchID = navigator.geolocation.watchPosition(wSuccess, wError, options);
+    }
+};
+

@@ -154,6 +154,12 @@
 				</header>
 				<div data-role="content">
 					<h2>GeoLocation</h2>
+					<div class="ui-grid-a">
+                        <div class="ui-block-a"><div data-role="button" onclick="toggleWatch();">Toggle</div></div>
+                        <div class="ui-block-b"><div data-role="button" onclick="getCurrentPosition();">Get Current</div></div>
+                    </div>
+                    <div id="currentPosition"></div>
+                    <img id="map"/>
 				</div>
 				<footer data-role="footer" data-position="fixed">
 					<nav data-role="navbar">
