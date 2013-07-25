@@ -24,3 +24,92 @@ h4{
 	color: rgba(143,216,240,1);
 	font-size: 50px;
 }
+
+/*header*/
+.ui-bar-a {
+	border: 1px solid 		#333 /*{a-bar-border}*/;
+	background: 			transparent /*{a-bar-background-color}*/;
+	color: 					#fff /*{a-bar-color}*/;
+	font-weight: bold;
+	text-shadow: 0 /*{a-bar-shadow-x}*/ -1px /*{a-bar-shadow-y}*/ 0 /*{a-bar-shadow-radius}*/ #000 /*{a-bar-shadow-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #000 /*{a-bar-background-start}*/), to( #8A3333 /*{a-bar-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #000 /*{a-bar-background-start}*/, #8A3333 /*{a-bar-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #000 /*{a-bar-background-start}*/, #8A3333 /*{a-bar-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #000 /*{a-bar-background-start}*/, #8A3333 /*{a-bar-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient( #000 /*{a-bar-background-start}*/, #8A3333 /*{a-bar-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient( #000 /*{a-bar-background-start}*/, #8A3333 /*{a-bar-background-end}*/);
+}
+
+/* Nav bar*/
+.ui-btn-up-a{
+	border: 1px solid #111;
+background: #fff;
+font-weight: 700;
+color: #fff;
+text-shadow: 0 1px 0 #111;
+background-image: -webkit-gradient(linear,left top,left bottom,from(#8A3333),to(#000));
+background-image: -webkit-linear-gradient(#8A3333,#000);
+background-image: -moz-linear-gradient(#8A3333,#000);
+background-image: -ms-linear-gradient(#8A3333,#000);
+background-image: -o-linear-gradient(#8A3333,#000);
+background-image: linear-gradient(#8A3333,#000);}
+
+/*page*/
+.ui-body-c{
+	border: 1px solid #aaa;
+color: #333;
+text-shadow: 0 0px 0 #fff;
+background: #000;
+background-image: -webkit-gradient(linear,left top,left bottom,from(#8F8F8F),to(#8F8F8F));
+background-image: -webkit-linear-gradient(#8F8F8F,#8F8F8F);
+background-image: -moz-linear-gradient(#8F8F8F,#8F8F8F);
+background-image: -ms-linear-gradient(#8F8F8F,#8F8F8F);
+background-image: -o-linear-gradient(#8F8F8F,#8F8F8F);
+background-image: linear-gradient(#8F8F8F,#8F8F8F);
+}
+
+/*listview tab*/
+.ui-bar-b{
+	border: 1px solid #456f9a;
+background: #5e87b0;
+color: #fff;
+font-weight: 700;
+text-shadow: 0 1px 0 #3e6790;
+background-image: -webkit-gradient(linear,left top,left bottom,from(#6F3232),to(#6F3232));
+background-image: -webkit-linear-gradient(#6F3232,#6F3232);
+background-image: -moz-linear-gradient(#6F3232,#6F3232);
+background-image: -ms-linear-gradient(#6F3232,#6F3232);
+background-image: -o-linear-gradient(#6F3232,#6F3232);
+background-image: linear-gradient(#6F3232,#6F3232);
+}
+}
+
+
+table{
+	border-color: #000;
+}
+
+body{
+	text-transform: inherit;
+	
+}
+
+#deviceInfo{
+	font-size: 24px;
+}
+
+#accelDisplay{
+	font-size: 24px;
+}
+
+#connection{
+	font-size: 24px;
+}
+
+#currentPosition{
+	font-size: 24px;
+}
+
+#conText{
+	font-size: 20px;
+}

@@ -32,7 +32,7 @@
        <script src="js/modernizr.custom.min.js"></script>
         <title>AVF Demo App</title>
     </head>
-    <body>
+    <body onload="init();">
          <section data-role="page" id="index">
 	         <header data-role="header" data-position="fixed">
 		         <h1>AVF Demo App</h1>
@@ -48,7 +48,7 @@
 			        </li>
 			        <li>
 		        		<a href="#deviceInfo">
-			        	<img src="img/camera.jpg">
+			        	<img src="img/device.jpg">
 			        	<h2>Device information</h2>
 			        	</a>
 			        </li>
@@ -167,7 +167,7 @@
 				</header>
 				<div data-role="content">
 					<h2>Accelerometer</h2>
-					<div class="ui-grid-b">
+					<div id="accelDisplay" class="ui-grid-b">
                         <div class="ui-block-a">X: <b id="x">&nbsp;</b></div>
                         <div class="ui-block-b">Y: <b id="y">&nbsp;</b></div> 
                         <div class="ui-block-c">Z: <b id="z">&nbsp;</b></div>
@@ -264,7 +264,7 @@
 				<div data-role="content">
 					<h2>Network Connections</h2>
 					<div data-role="button" onclick="checkNetwork();">Check Connection</div>
-                    <div>Connection: <b id="connection"></b></div>
+                    <div><span id="conText">Connection: <span><b id="connection"></b></div>
 				</div>
 				<footer data-role="footer" data-position="fixed">
 					<nav data-role="navbar">
