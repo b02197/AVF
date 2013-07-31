@@ -30,7 +30,7 @@
         <title>AVF Demo App</title>
     </head>
     
-    <body onLoad="init();">
+    <body onload="init();">
         <section data-role="page" id="index">
             <header data-role="header" data-position="fixed">
                  <h1>AVF Demo App</h1>
@@ -58,7 +58,7 @@
 				        <li>
 			        		<a href="#geoLoc">
 				        	<img src="img/map.jpg">
-				        	<h2>Geolocation</h2>
+				        	<h2>Geolocation with <br>Map Mash Up</h2>
 				        	</a>
 				        </li>
 				        <li>
@@ -81,7 +81,7 @@
 			        <li>
 		        		<a href="#weatherApi">
 			        	<img src="img/ham.png">
-			        	<h2>HAMweather Aeris API</h2>
+			        	<h2>HAMweather Aeris API <br>with Geolocation Mash Up</h2>
 			        	</a>
 			        </li>
 <br>    		    
@@ -147,13 +147,12 @@
 				</footer>
 			</section>
 			
-			
-			<section data-role="page" id="geoLoc">							<!Barcode Page>
+			<section data-role="page" id="geoLoc">							<!geoLocation Page>
 				<header data-role="header" data-position="fixed">
 					<h1>AVF Demo App</h1>
 				</header>
 				<div data-role="content">
-					<h2>GeoLocation</h2>
+					<h2>GeoLocation With Map Mash Up</h2>
 					<div class="ui-grid-a">
                         <div class="ui-block-a"><div data-role="button" onclick="toggleWatch();">Toggle</div></div>
                         <div class="ui-block-b"><div data-role="button" onclick="getCurrentPosition();">Get Current</div></div>
@@ -170,7 +169,6 @@
 					</nav>
 				</footer>
 			</section>
-			
 			
 			<section data-role="page" id="accel">						<!Accelerometer page>
 				<header data-role="header" data-position="fixed">
@@ -311,17 +309,15 @@
 					</nav>
 				</footer>
 			</section>
-			
-			
-			<section data-role="page" id="weatherApi">					<!weather source page>
+
+			<section data-role="page" id="weatherApi">					<!weather api page>
 				<header data-role="header" data-position="fixed">
 					<h1>AVF Demo App</h1>
 				</header>
 				<div data-role="content">
 					<h2>HAMweather Aeris API</h2>
-                   
                     <ul id="weatherList">
-                        <li id="weatherLi"><h3>The weather in Bridgeport Michigan is:</h3></li>
+                        <li id="weatherLi"></li>
                     </ul>
 				</div>
 				<footer data-role="footer" data-position="fixed">
@@ -333,8 +329,7 @@
 					</nav>
 				</footer>
 			</section>
-			
-			
+
 			<section data-role="page" id="week1">						<!week 1 page>
 				<header data-role="header" data-position="fixed">
 					<h1>AVF Demo App</h1>
@@ -437,7 +432,6 @@ Assistive Touch<br>
 					</nav>
 				</footer>
 			</section>
-			
 			
 		<script type="text/javascript" src="cordova.js"></script>
        <script src="js/jquery-2.0.0.min.js" type="text/javascript"></script>

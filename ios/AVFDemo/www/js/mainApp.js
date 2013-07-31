@@ -1,77 +1,112 @@
 //Michael Eaton
 //AVF 1307
-//week 1 
+//week 1
 //AVF Demo app
 
+//page listener
+var init = function() {
+    document.addEventListener("deviceready", onDeviceReady, true);
+}
 
+function onDeviceReady(){
+	navigator.geolocation.getCurrentPosition(onSuccess, onError);
+}
 //Functions for instagram
 
 $('#instaApi').on('pageinit', function(){
-$('#game').click(function(){
-	$(function(){
-	  	  var url = "https://api.instagram.com/v1/tags/game/media/recent?callback=?&amp;client_id=a7a95df91793454f90ae6e0602ff6123&amp;min_id=10"
-	  	  var name = "game";
-	  	  $.getJSON(url, screenoutput);
-	  	 });
-	  });
-		  
-$('#cars').click(function(){
-	 $(function(){
-	  	  var url = "https://api.instagram.com/v1/tags/cars/media/recent?callback=?&amp;client_id=a7a95df91793454f90ae6e0602ff6123&amp;min_id=10"
-	  	  var name = "cars";
-	  $.getJSON(url, screenoutput);
-	  
-	  });
-})
-$('#food').click(function(){
-	 $(function(){
-	  	  var url = "https://api.instagram.com/v1/tags/food/media/recent?callback=?&amp;client_id=a7a95df91793454f90ae6e0602ff6123&amp;min_id=10"
-	  	  var name = "food";
-	  $.getJSON(url, screenoutput);
-	  
-	  });
-}) 
-	
-	var screenoutput = function(data){
-	    console.log(data);
-	    
-	    $("#picData").html("<h3>Your Seach Resalts</h3>");
-	    
-	    
-	    $.each(data.data, function(index, photo){
-	           var picture = "<li><img src='" + photo.images.standard_resolution.url + "' alt='" + photo.user.id + "' />" + photo.user.full_name + ", <em>(" + photo.user.username +")</em> , "+ photo.caption.text + "</li>";
-	           $("#picData").append(picture)
-	           });
-	};
-
-})
+                  var options = { frequency: 100 };
+                  var x,y,z;
+                  watchID = navigator.accelerometer.watchAcceleration(accelerometerSuccess, accelerometerError, options);
+                  
+                  // navigator.accelerometer.getCurrentAcceleration(accelerometerSuccess, accelerometerError);
+                  
+                  function accelerometerSuccess(acceleration) {
+                  
+                  x = acceleration.x;
+                  y = acceleration.y;
+                  z = acceleration.z;
+                  
+                  window.scrollBy(0,y);
+                  scrolldelay = setTimeout('pageScroll()',1000);
+                  
+                  }
+                  
+                  function accelerometerError(acceleration) {
+                  
+                  alert('Error!');
+                  }
+                  $('#game').click(function(){
+                                   $(function(){
+                                     var url = "https://api.instagram.com/v1/tags/game/media/recent?callback=?&amp;client_id=a7a95df91793454f90ae6e0602ff6123&amp;min_id=10"
+                                     var name = "game";
+                                     $.getJSON(url, screenoutput);
+                                     });
+                                   });
+                  
+                  $('#cars').click(function(){
+                                   $(function(){
+                                     var url = "https://api.instagram.com/v1/tags/cars/media/recent?callback=?&amp;client_id=a7a95df91793454f90ae6e0602ff6123&amp;min_id=10"
+                                     var name = "cars";
+                                     $.getJSON(url, screenoutput);
+                                     
+                                     });
+                                   })
+                  $('#food').click(function(){
+                                   $(function(){
+                                     var url = "https://api.instagram.com/v1/tags/food/media/recent?callback=?&amp;client_id=a7a95df91793454f90ae6e0602ff6123&amp;min_id=10"
+                                     var name = "food";
+                                     $.getJSON(url, screenoutput);
+                                     
+                                     });
+                                   })
+                  
+                  var screenoutput = function(data){
+                  console.log(data);
+                  
+                  $("#picData").html("<h3>Your Seach Resalts</h3>");
+                  
+                  
+                  $.each(data.data, function(index, photo){
+                         var picture = "<li><img src='" + photo.images.standard_resolution.url + "' alt='" + photo.user.id + "' />" + photo.user.full_name + ", <em>(" + photo.user.username +")</em> , "+ photo.caption.text + "</li>";
+                         $("#picData").append(picture)
+                         });
+                  };
+                  
+                  })
 
 //Functions for Weather api
-//
-$(function(){
-  var wUrl = "http://api.aerisapi.com/observations/bridgeport,mi?client_id=4J0DvsCTHRMqeVoRsv1mz&client_secret=uwQuCX7jTQ2XaRxgxa3zc88E1AYAZouq3gXlggoH";
-  $.getJSON(wUrl, outPutScreen);
-  console.log('load weather');
-  });
 
+function onSuccess(position) {
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+    
+    $.ajax({
+	    url : "http://api.aerisapi.com/observations/bridgeport,mi?client_id=4J0DvsCTHRMqeVoRsv1mz&client_secret=uwQuCX7jTQ2XaRxgxa3zc88E1AYAZouq3gXlggoH",
+	    dataType : "jsonp",
+	    success : function(data) {
+			console.log(data);
+			var ob = data.response.ob;
+			$('#weatherList').append(
+				"<li>" + "Weather: " + ob.weather + "</li>" +
+				"<li>" + "Temp: " + ob.tempF + "</li>" +
+				"<li>" + "Wind: " + ob.windMPH + "</li>"
+			);
+		}
+	});
+}
 
-var outPutScreen = function(data){
-	console.log(data);
-	var ob = data.response.ob;
-	var temp = "<li> The temp is: <h4>" + ob.tempF + " F</h4></li>";
-	var wind = "<li> The Wind speed is: <h4>" + ob.windMPH + " MPH</h4></li>";
-	var weather = "<li> The weather condition is: <h4>" + ob.weather + "</h4></li>"
-	$('#weatherList').append(temp);
-	$('#weatherList').append(wind);
-	$('#weatherList').append(weather);
-};
-
-//geolocation
+// onError Callback receives a PositionError object
+function onError(error) {
+	alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
+}//geolocation
 
 var getCurrentPosition = function() {
     var gSuccess = function(pos) {
-        var text = "<div>Latitude: " + pos.coords.latitude +
-        "<br/>" + "Longitude: " + pos.coords.longitude + "<br/>" +
+    	var lat = pos.coords.latitude;
+    	var lon = pos.coords.longitude;
+        var text = "<div>Latitude: " + lat +
+        "<br/>" + "Longitude: " + lon + "<br/>" +
         "Accuracy: " + pos.coords.accuracy + "m<br/>" + "</div>";
         $("#currentPosition").html(text);
         console.log(text);
@@ -152,18 +187,18 @@ function toggleAccel() {
     if (accelerationWatch !== null) {
         navigator.accelerometer.clearWatch(accelerationWatch);
         updateAcceleration({
-            x : "",
-            y : "",
-            z : ""
-        });
+                           x : "",
+                           y : "",
+                           z : ""
+                           });
         accelerationWatch = null;
     } else {
         var options = {};
         options.frequency = 1000;
         accelerationWatch = navigator.accelerometer.watchAcceleration(
-                updateAcceleration, function(ex) {
-                    alert("Accelerometer Error!");
-                }, options);
+                                                                      updateAcceleration, function(ex) {
+                                                                      alert("Accelerometer Error!");
+                                                                      }, options);
     }
 }
 
@@ -171,16 +206,16 @@ function getAccel() {
     if (accelerationWatch !== null) {
         navigator.accelerometer.clearWatch(accelerationWatch);
         updateAcceleration({
-            x : "",
-            y : "",
-            z : ""
-        });
+                           x : "",
+                           y : "",
+                           z : ""
+                           });
         accelerationWatch = null;
     }
     navigator.accelerometer.getCurrentAcceleration(
-            updateAcceleration, function(ex) {
-                alert("Accelerometer Error!");
-            });
+                                                   updateAcceleration, function(ex) {
+                                                   alert("Accelerometer Error!");
+                                                   });
 }
 
 //Device Info
@@ -218,7 +253,4 @@ function checkNetwork() {
 }
 
 
-//page listener
-function init() {
-    document.addEventListener("deviceready", onDeviceReady, true);
-}
+
