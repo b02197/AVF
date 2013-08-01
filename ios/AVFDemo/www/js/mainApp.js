@@ -67,7 +67,7 @@ $('#instaApi').on('pageinit', function(){
                   
                   
                   $.each(data.data, function(index, photo){
-                         var picture = "<li><img src='" + photo.images.standard_resolution.url + "' alt='" + photo.user.id + "' />" + photo.user.full_name + ", <em>(" + photo.user.username +")</em> , "+ photo.caption.text + "</li>";
+                         var picture = "<li><br><img src='" + photo.images.standard_resolution.url + "' alt='" + photo.user.id + "' /><br><br>" + photo.user.full_name + ", <em>(" + photo.user.username +")</em> , "+ photo.caption.text + "</li>";
                          $("#picData").append(picture)
                          });
                   };
@@ -76,25 +76,29 @@ $('#instaApi').on('pageinit', function(){
 
 //Functions for Weather api
 
-function onSuccess(position) {
-    var lat = position.coords.latitude;
-    var lon = position.coords.longitude;
-    
-    $.ajax({
-	    url : "http://api.aerisapi.com/observations/bridgeport,mi?client_id=4J0DvsCTHRMqeVoRsv1mz&client_secret=uwQuCX7jTQ2XaRxgxa3zc88E1AYAZouq3gXlggoH",
-	    dataType : "jsonp",
-	    success : function(data) {
-			console.log(data);
-			var ob = data.response.ob;
-			$('#weatherList').append(
-				"<li>" + "Weather: " + ob.weather + "</li>" +
-				"<li>" + "Temp: " + ob.tempF + "</li>" +
-				"<li>" + "Wind: " + ob.windMPH + "</li>"
-			);
-		}
-	});
-}
+$(function(){
+  var wUrl = "http://api.aerisapi.com/observations/bridgeport,mi?client_id=4J0DvsCTHRMqeVoRsv1mz&client_secret=uwQuCX7jTQ2XaRxgxa3zc88E1AYAZouq3gXlggoH";
+  $.getJSON(wUrl, outPutScreen);
+  console.log('load weather');
+  });
 
+
+var outPutScreen = function(data){
+	console.log(data);
+	var ob = data.response.ob;
+	var wLoc = data.response.place.name;
+	var place = "<li> The weather for " + wLoc + " is:</li><br>"
+	var temp = "<li> The temp is: <h4>" + ob.tempF + " F</h4></li>";
+	var feels ="<li> It feels like: <h4>" + ob.feelslikeF + " F</h4></li>"
+	var hum = "<li> The humitity is: <h4>" + ob.humidity + " %</h4></li>"
+	var wind = "<li> The Wind speed is: <h4>" + ob.windMPH + " MPH</h4></li>";
+	var weather = "<li> The weather condition is: <h4>" + ob.weather + "</h4></li>"
+	$('#weatherList').append(place);
+	$('#weatherList').append(temp);
+	$('#weatherList').append(feels);
+	$('#weatherList').append(hum);
+	$('#weatherList').append(weather);
+};
 // onError Callback receives a PositionError object
 function onError(error) {
 	alert('code: '    + error.code    + '\n' +
